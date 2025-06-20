@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+    <link rel="stylesheet" href="AIcss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Sign Language Translator</h1>
+        <p class="subtitle">Learn and practice sign language with real-time feedback</p>
+        <nav class="main-nav">
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="video-container">
+            <video id="inputVideo" autoplay muted playsinline style="display:none;"></video>
+            <canvas id="outputCanvas" width="640" height="480"></canvas>
+            <div id="result">Loading...</div>
+        </div>
+
+        <!-- Practice Mode Section (Default View) -->
+        <div class="tab-content" id="practice-content">
+            <div class="instructions">
+                <h2>Available Signs</h2>
+                <div class="gesture-cards">
+                    <div class="gesture-card">
+                        <div class="gesture-icon">👋</div>
+                        <h3>Hello</h3>
+                        <p>Point your index finger near your eye</p>
+                    </div>
+                    <div class="gesture-card">
+                        <div class="gesture-icon">👍</div>
+                        <h3>Yes</h3>
+                        <p>Show a thumbs up gesture</p>
+                    </div>
+                    <div class="gesture-card">
+                        <div class="gesture-icon">👋</div>
+                        <h3>Bye</h3>
+                        <p>Wave your hand side to side</p>
+                    </div>
+                    <div class="gesture-card">
+                        <div class="gesture-icon">🙏</div>
+                        <h3>Please</h3>
+                        <p>Hold hand at chest level</p>
+                    </div>
+                    <div class="gesture-card">
+                        <div class="gesture-icon">🙏</div>
+                        <h3>Thank You</h3>
+                        <p>Touch your hand near your mouth</p>
+                    </div>
+                    <div class="gesture-card">
+                        <div class="gesture-icon">❤️</div>
+                        <h3>Love</h3>
+                        <p>Join both hands at chest level</p>
+                    </div>
+                </div>
+
+                <div class="practice-section">
+                    <h2>Practice Mode</h2>
+                    <p>Try to perform the sign shown below:</p>
+                    <div id="practice-target">Hello 👋</div>
+                    <button id="nextSign" class="btn">Next Sign</button>
+                    <div id="practice-feedback">Waiting for sign...</div>
+                </div>
+            </div>
+        </div>
+
+    <div class="history-panel">
+        <h2>Recognition History</h2>
+        <ul id="sign-history"></ul>
+        <button id="clearHistory" class="btn">Clear History</button>
+    </div>
+
+    <!-- MediaPipe Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+    <!-- Main Script -->
+    <script src="AI2.js"></script>
+</body>
+</html>

@@ -1,0 +1,885 @@
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+/* Navigation */
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.main-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-nav a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+}
+
+/* ...existing code... */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   /* Add this */
+    min-height: 80vh;          /* Add this for vertical centering */
+    flex: 1;
+}
+/* ...existing code... */
+
+/* Remove or override the media query for .container if you want it always centered */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .video-container {
+        margin-right: 0 !important;
+        margin-bottom: 2rem !important;
+        flex: unset !important;
+    }
+}
+/* ...existing code... */
+
+canvas {
+    border: 5px solid white;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+#result {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.control-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background-color: rgba(25, 118, 210, 0.8);
+    transform: scale(1.1);
+}
+
+/* Tab Content */
+.tab-content {
+    width: 100%;
+}
+
+/* Instructions Section */
+.instructions {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.instructions h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+/* Learning Mode Styles */
+.learning-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.learning-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #007bff;
+    width: 25%; /* Will be updated by JS */
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.lesson-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.lesson-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.lesson-step {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.lesson-step.active {
+    opacity: 1;
+    border-left: 5px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-step h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.step-image {
+    font-size: 4rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.lesson-selector {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-selector h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.lesson-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.lesson-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lesson-btn:hover {
+    background-color: #e9ecef;
+}
+
+.lesson-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Dictionary Styles */
+.dictionary-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dictionary-search {
+    display: flex;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#dictionary-search-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+#search-btn {
+    border-radius: 0 5px 5px 0;
+    padding: 0.7rem 1rem;
+}
+
+.dictionary-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.category-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #e9ecef;
+}
+
+.category-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.dictionary-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.dictionary-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dictionary-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dictionary-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.dictionary-item h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.dictionary-item p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.sign-detail-content {
+    max-width: 800px;
+}
+
+.sign-detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sign-detail-icon {
+    font-size: 4rem;
+    margin-right: 2rem;
+}
+
+.sign-detail-title h2 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.sign-detail-category {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.sign-detail-description {
+    margin-bottom: 2rem;
+}
+
+.sign-detail-steps {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sign-detail-steps h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.sign-detail-steps ol {
+    padding-left: 1.5rem;
+}
+
+.sign-detail-steps li {
+    margin-bottom: 0.8rem;
+}
+
+.sign-detail-video {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.sign-detail-video h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.video-placeholder {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.practice-this-sign {
+    margin-top: 1rem;
+}
+
+/* Gesture Cards */
+.gesture-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.gesture-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gesture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gesture-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.gesture-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.gesture-card p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Practice Section */
+.practice-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+#practice-target {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+#practice-feedback {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    height: 2rem;
+}
+
+.success {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* History Panel */
+.history-panel {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.history-panel h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+#sign-history {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#sign-history li {
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sign-history li:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+/* Button Styles */
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #0069d9;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+footer a {
+    color: #89f7fe;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes highlight {
+    0% {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    50% {
+        background-color: rgba(25, 118, 210, 0.8);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.pulse {
+    animation: pulse 0.5s ease infinite;
+}
+
+.highlight {
+    animation: highlight 1s ease;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .video-container {
+        flex: 0 0 60%;
+        margin-right: 2rem;
+        margin-bottom: 0;
+    }
+
+    .instructions {
+        flex: 0 0 35%;
+    }
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    #result {
+        font-size: 1.5rem;
+        min-width: 180px;
+    }
+
+    .gesture-cards {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .controls {
+        margin-top: 3rem;
+    }
+}
+
+/* Challenge Mode Styles */
+.challenge-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.challenge-intro p {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.difficulty-btn {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.difficulty-btn[data-difficulty="easy"] {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.difficulty-btn[data-difficulty="easy"]:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.difficulty-btn[data-difficulty="medium"] {
+    border-color: #fd7e14;
+    color: #fd7e14;
+}
+
+.difficulty-btn[data-difficulty="medium"]:hover {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.difficulty-btn[data-difficulty="hard"] {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.difficulty-btn[data-difficulty="hard"]:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.challenge-timer {
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #dc3545;
+}
+
+.challenge-score {
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #ffc107;
+}
+
+.challenge-current {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.challenge-target {
+    font-size: 3rem;
+    margin: 1rem 0;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    animation: pulse 2s infinite;
+}
+
+.challenge-feedback {
+    font-size: 1.2rem;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.challenge-progress {
+    margin-top: 2rem;
+}
+
+.results-details {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.results-details p {
+    margin-bottom: 0.5rem;
+}
+
+.results-details span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+#final-score {
+    font-size: 1.5rem;
+    color: #28a745;
+}
+
+#try-again {
+    margin-right: 1rem;
+}
+
+/* ... existing code ... */
